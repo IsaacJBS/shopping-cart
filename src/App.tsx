@@ -8,7 +8,6 @@ import { LinearProgress } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
-import { Button } from "@material-ui/core";
 
 import { Wrapper, StyledButton } from "./App.styles";
 
