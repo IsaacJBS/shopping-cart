@@ -38,7 +38,20 @@ const App = () => {
     items.reduce((ack: number, item) => ack + item.quantity, 0);
   };
 
-  const handleAddToCart = (clickedItem: CartItemType) => null;
+  const handleAddToCart = (clickedItem: CartItemType) => {
+    setCartItems((prev) => {
+      const isItemInCart = prev.find((item) => item.id === clickedItem.id);
+
+      if (isItemInCart) {
+        return prev.map((item) =>
+          item.id === clickedItem.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item,
+        );
+      }
+      return [...prev, { ...clickedItem, quantity: 1 }];
+    });
+  };
 
   const handleRemoveFromCart = () => null;
 
