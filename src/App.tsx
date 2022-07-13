@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
 
+import Item from "./Item/Item";
 import { Drawer } from "@material-ui/core";
 import { LinearProgress } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
@@ -31,7 +32,7 @@ const App = () => {
 
   const getTotalItems = () => null;
 
-  const handleAddToCart = () => null;
+  const handleAddToCart = (clickedItem: CartItemType) => null;
 
   const handleFromCart = () => null;
 
@@ -40,11 +41,15 @@ const App = () => {
 
   console.log(data);
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Olá</h1>
-      </header>
-    </div>
+    <Wrapper>
+      <Grid container spacing={3}>
+        {data?.map((item: CartItemType) => (
+          <Grid item key={item.id} xs={12} sm={4}>
+            <Item item={item} handleAddToCart={handleAddToCart} />
+          </Grid>
+        ))}
+      </Grid>
+    </Wrapper>
   );
 };
 
