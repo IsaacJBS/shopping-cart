@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "react-query";
 
 import Item from "./Item/Item";
+import Cart from "./Cart/Cart";
 import { Drawer } from "@material-ui/core";
 import { LinearProgress } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
@@ -39,7 +40,7 @@ const App = () => {
 
   const handleAddToCart = (clickedItem: CartItemType) => null;
 
-  const handleFromCart = () => null;
+  const handleRemoveFromCart = () => null;
 
   if (isLoading) return <LinearProgress />;
   if (error) return <div>Something went wrong</div>;
@@ -52,7 +53,11 @@ const App = () => {
         open={cartOpen}
         onClose={() => setCartOpen(!cartItems)}
       >
-        Cart Goes Here
+        <Cart
+          cartItems={cartItems}
+          addToCart={handleAddToCart}
+          removeFromCart={handleRemoveFromCart}
+        />
       </Drawer>
       <StyledButton onClick={() => setCartOpen(!cartOpen)}>
         <Badge badgeContent={5} color="error">
