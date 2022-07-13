@@ -12,6 +12,12 @@ type Props = {
 };
 
 const Cart = ({ cartItems, addToCart, removeFromCart }: Props) => {
+  const calculateTotal = (items: CartItemType[]) => {
+    return items.reduce(
+      (ack: number, item) => ack + item.quantity * item.price,
+      0,
+    );
+  };
   return (
     <Wrapper>
       <h2>Your shopping cart</h2>
@@ -24,6 +30,7 @@ const Cart = ({ cartItems, addToCart, removeFromCart }: Props) => {
           removeFromCart={removeFromCart}
         />
       ))}
+      <h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
     </Wrapper>
   );
 };
