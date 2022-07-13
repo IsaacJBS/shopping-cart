@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 
 import Item from "./Item/Item";
@@ -17,7 +17,7 @@ export type CartItemType = {
   image: string;
   price: number;
   title: string;
-  amount: number;
+  quantity: number;
 };
 
 const getProducts = async (): Promise<CartItemType[]> => {
@@ -33,7 +33,9 @@ const App = () => {
     getProducts,
   );
 
-  const getTotalItems = (items: CartItemType[]) => null;
+  const getTotalItems = (items: CartItemType[]) => {
+    items.reduce((ack: number, item) => ack + item.quantity, 0);
+  };
 
   const handleAddToCart = (clickedItem: CartItemType) => null;
 
@@ -53,7 +55,7 @@ const App = () => {
         Cart Goes Here
       </Drawer>
       <StyledButton onClick={() => setCartOpen(!cartOpen)}>
-        <Badge badgeContent={getTotalItems(cartItems)} color="error">
+        <Badge badgeContent={5} color="error">
           <AddShoppingCart color="action" />
         </Badge>
       </StyledButton>
