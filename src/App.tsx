@@ -8,6 +8,7 @@ import { LinearProgress } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 import { Wrapper, StyledButton } from "./App.styles";
 
@@ -53,6 +54,10 @@ const App = () => {
     });
   };
 
+  const handleRemoveAllProducts = () => {
+    setCartItems([]);
+  };
+
   const handleRemoveFromCart = (id: number) => {
     setCartItems((prev) =>
       prev.reduce((ack, item) => {
@@ -69,7 +74,6 @@ const App = () => {
   if (isLoading) return <LinearProgress />;
   if (error) return <div>Something went wrong</div>;
 
-  console.log(data);
   return (
     <Wrapper>
       <Drawer
@@ -81,6 +85,7 @@ const App = () => {
           cartItems={cartItems}
           addToCart={handleAddToCart}
           removeFromCart={handleRemoveFromCart}
+          removeAllProducts={handleRemoveAllProducts}
         />
       </Drawer>
       <StyledButton onClick={() => setCartOpen(!cartOpen)}>

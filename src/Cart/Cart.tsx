@@ -1,17 +1,22 @@
 import CardItem from "../CartItem/CartItem";
 
-import { Wrapper } from "./Cart.styles";
+import { Wrapper, StyledButton } from "./Cart.styles";
 
 import { CartItemType } from "../App";
-import CartItem from "../CartItem/CartItem";
 
 type Props = {
   cartItems: CartItemType[];
   addToCart: (clickedItem: CartItemType) => void;
   removeFromCart: (id: number) => void;
+  removeAllProducts: () => void;
 };
 
-const Cart = ({ cartItems, addToCart, removeFromCart }: Props) => {
+const Cart = ({
+  cartItems,
+  addToCart,
+  removeFromCart,
+  removeAllProducts,
+}: Props) => {
   const calculateTotal = (items: CartItemType[]) => {
     return items.reduce(
       (ack: number, item) => ack + item.quantity * item.price,
@@ -31,6 +36,9 @@ const Cart = ({ cartItems, addToCart, removeFromCart }: Props) => {
         />
       ))}
       <h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
+      <StyledButton onClick={removeAllProducts} variant="contained">
+        Remove all
+      </StyledButton>
     </Wrapper>
   );
 };
