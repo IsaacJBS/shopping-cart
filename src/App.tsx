@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 
-import Item from "./Item/Item";
-import Cart from "./Cart/Cart";
+import Item from "./components/Item/Item";
+import Cart from "./components/Cart/Cart";
 import { Drawer } from "@mui/material";
 import { LinearProgress } from "@mui/material";
 import { Grid } from "@mui/material";

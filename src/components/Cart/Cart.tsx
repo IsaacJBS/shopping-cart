@@ -2,7 +2,7 @@ import CardItem from "../CartItem/CartItem";
 
 import { Wrapper, StyledButton } from "./Cart.styles";
 
-import { CartItemType } from "../App";
+import { CartItemType } from "../../App";
 
 type Props = {
   cartItems: CartItemType[];
