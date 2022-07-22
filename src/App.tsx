@@ -3,11 +3,11 @@ import { useQuery } from "react-query";
 
 import Item from "./Item/Item";
 import Cart from "./Cart/Cart";
-import { Drawer } from "@material-ui/core";
-import { LinearProgress } from "@material-ui/core";
-import { Grid } from "@material-ui/core";
-import { AddShoppingCart } from "@material-ui/icons";
-import { Badge } from "@material-ui/core";
+import { Drawer } from "@mui/material";
+import { LinearProgress } from "@mui/material";
+import { Grid } from "@mui/material";
+import { AddShoppingCart } from "@mui/icons-material";
+import { Badge } from "@mui/material";
 
 import { Wrapper, StyledButton } from "./App.styles";
 

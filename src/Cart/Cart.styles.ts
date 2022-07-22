@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 
 export const Wrapper = styled.aside`
   font-family: Arial, Helvetica, sans-serif;
