@@ -2,13 +2,13 @@ import React from "react";
 
 import { Button } from "@mui/material";
 
-import { CartItemType } from "../../App";
+import { ICartItem } from "../../interfaces/CardItem";
 
 import { Wrapper } from "./Item.styles";
 
 type Props = {
-  item: CartItemType;
-  handleAddToCart: (clickedItem: CartItemType) => void;
+  item: ICartItem;
+  handleAddToCart: (clickedItem: ICartItem) => void;
 };
 
 const Item = ({ item, handleAddToCart }: Props) => {

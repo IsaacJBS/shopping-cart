@@ -2,11 +2,11 @@ import { Button } from "@mui/material";
 
 import { Wrapper } from "./CartItem.styles";
 
-import { CartItemType } from "../../App";
+import { ICartItem } from "../../interfaces/CardItem";
 
 type Props = {
-  item: CartItemType;
-  addToCart: (clickedItem: CartItemType) => void;
+  item: ICartItem;
+  addToCart: (clickedItem: ICartItem) => void;
   removeFromCart: (id: number) => void;
 };
 

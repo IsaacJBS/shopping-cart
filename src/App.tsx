@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 
+import { ICartItem } from "./interfaces/CardItem";
+
 import Item from "./components/Item/Item";
 import Cart from "./components/Cart/Cart";
 import { Drawer } from "@mui/material";
@@ -11,34 +13,24 @@ import { Badge } from "@mui/material";
 
 import { Wrapper, StyledButton } from "./App.styles";
 
-export type CartItemType = {
-  id: number;
-  category: string;
-  description: string;
-  image: string;
-  price: number;
-  title: string;
-  quantity: number;
-};
-
-const getProducts = async (): Promise<CartItemType[]> => {
+const getProducts = async (): Promise<ICartItem[]> => {
   return await (await fetch("https://fakestoreapi.com/products")).json();
 };
 
 const App = () => {
   const [cartOpen, setCartOpen] = useState<boolean>(false);
-  const [cartItems, setCartItems] = useState([] as CartItemType[]);
+  const [cartItems, setCartItems] = useState([] as ICartItem[]);
 
-  const { data, isLoading, error } = useQuery<CartItemType[]>(
+  const { data, isLoading, error } = useQuery<ICartItem[]>(
     "products",
     getProducts,
   );
 
-  const getTotalItems = (items: CartItemType[]) => {
+  const getTotalItems = (items: ICartItem[]) => {
     return items.reduce((ack: number, item) => ack + item.quantity, 0);
   };
 
-  const handleAddToCart = (clickedItem: CartItemType) => {
+  const handleAddToCart = (clickedItem: ICartItem) => {
     setCartItems((prev) => {
       const isItemInCart = prev.find((item) => item.id === clickedItem.id);
 
@@ -66,7 +58,7 @@ const App = () => {
         } else {
           return [...ack, item];
         }
-      }, [] as CartItemType[]),
+      }, [] as ICartItem[]),
     );
   };
 
@@ -93,7 +85,7 @@ const App = () => {
         </Badge>
       </StyledButton>
       <Grid container spacing={3}>
-        {data?.map((item: CartItemType) => (
+        {data?.map((item: ICartItem) => (
           <Grid item key={item.id} xs={12} sm={4}>
             <Item item={item} handleAddToCart={handleAddToCart} />
           </Grid>

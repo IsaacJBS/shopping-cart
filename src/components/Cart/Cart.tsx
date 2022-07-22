@@ -2,11 +2,11 @@ import CardItem from "../CartItem/CartItem";
 
 import { Wrapper, StyledButton } from "./Cart.styles";
 
-import { CartItemType } from "../../App";
+import { ICartItem } from "../../interfaces/CardItem";
 
 type Props = {
-  cartItems: CartItemType[];
-  addToCart: (clickedItem: CartItemType) => void;
+  cartItems: ICartItem[];
+  addToCart: (clickedItem: ICartItem) => void;
   removeFromCart: (id: number) => void;
   removeAllProducts: () => void;
 };
@@ -17,7 +17,7 @@ const Cart = ({
   removeFromCart,
   removeAllProducts,
 }: Props) => {
-  const calculateTotal = (items: CartItemType[]) => {
+  const calculateTotal = (items: ICartItem[]) => {
     return items.reduce(
       (ack: number, item) => ack + item.quantity * item.price,
       0,
