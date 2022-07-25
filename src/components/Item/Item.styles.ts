@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  border: 1px solid lightblue;
   border-radius: 20px;
 
   button {
@@ -24,5 +23,9 @@ export const Wrapper = styled.div`
     font-family: Arial, Helvetica, sans-serif;
     padding: 1rem;
     height: 100%;
+  }
+
+  &:hover {
+    outline: 1px solid grey;
   }
 `;
